@@ -12,6 +12,8 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+    // storage constant
+    'file_path' => env('FILE_PATH','/'),
 
     'name' => env('APP_NAME', 'Laravel'),
 

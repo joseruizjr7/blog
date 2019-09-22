@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
+Route::resource('/posts', 'PostController');
 
 Auth::routes();
 
