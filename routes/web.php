@@ -12,11 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
+    //return view('welcome');
 });
 
+// Shows other users profile
+Route::get('user/{id}', 'ShowProfile')->name('user.show');
+
+// Authenticated user profile routes
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
+
+// Posts routes
 Route::resource('/posts', 'PostController');
 
 Auth::routes();

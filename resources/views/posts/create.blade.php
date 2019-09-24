@@ -16,8 +16,8 @@
                   <label for="post_image">Image</label>
                   <input id="post_image" type="file" class="form-control" name="post_image" role="form" enctype="multipart/form-data">
               </div>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
     </form>
  </div>
 @endsection

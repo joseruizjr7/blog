@@ -19,7 +19,10 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('auth.profile');
+        $user = Auth::user();
+        return view('auth.profile', [
+            'user' => $user,
+        ]);
     }
 
     public function updateProfile(Request $request)
@@ -27,6 +30,7 @@ class ProfileController extends Controller
         // Form Validation
         $request->validate([
             'name' => 'required',
+            'last_name' => 'required',
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -35,6 +39,7 @@ class ProfileController extends Controller
 
         // Set user name
         $user->name = $request->input('name');
+        $user->last_name = $request->input('last_name');
 
         // check if a profile image has been uploaded
         if ($request->has('profile_image')) {
