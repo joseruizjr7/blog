@@ -4,18 +4,18 @@
 <div class="container">
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#createPostModal">New Post</button>
+        <div class="col-md-10">
+            <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#createPostModal">New Post</button>
         </div>
     </div>
     @if ($posts)
         <div class="row justify-content-center mt-3">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 
                 @foreach ($posts as $post)
                     <div class="card mb-3">
                         @if ($post->post_image)
-                        <img src="{{asset($post->post_image)}}" class="card-img-top">
+                        <img src="{{ Storage::url($post->post_image) }}" class="card-img-top">
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>

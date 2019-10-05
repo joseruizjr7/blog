@@ -17,11 +17,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -50,9 +51,9 @@
                             @endif
                         @else
                             <li class="nav-item dropdown ml-2">
-                                <a id="navbarDropdown" class="dropdown-toggle btn btn-outline-secondary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="dropdown-toggle nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if (auth()->user()->profile_image)
-                                        <img class="mr-1" src="{{ asset(Auth::user()->profile_image) }}" style="width: 30px; height: 30px; border-radius: 50%;">
+                                        <img class="mr-2" src="{{ asset(Storage::url(Auth::user()->profile_image)) }}" style="width: 30px; height: 30px; border-radius: 50%;">
                                     @endif
                                     {{ Auth::user()->name }} {{ Auth::user()->last_name }} <span class="caret"></span>
                                 </a>
