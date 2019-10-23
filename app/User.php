@@ -19,6 +19,11 @@ class User extends Authenticatable
         'name', 'last_name', 'username', 'profile_image', 'email', 'password',
     ];
 
+    public function getImageAttribute()
+    {
+        return $this->profile_image;
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

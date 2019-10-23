@@ -13,7 +13,7 @@ return [
     |
     */
     // storage constant
-    'file_path' => env('FILE_PATH','/'),
+    //'file_path' => env('FILE_PATH','/'),
 
     'name' => env('APP_NAME', 'Laravel'),
 

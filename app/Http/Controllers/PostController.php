@@ -62,9 +62,10 @@ class PostController extends Controller
             // Get image file
             $image = $request->file('post_image');
             // Make a image name based on user name and current timestamp
-            $name = Str::slug($request->input('title')).'_'.time();
+            //$name = Str::slug($request->input('title')).'_'.time();
+            $name = Str::slug(auth()->user()->name).'post'.'_'.time();
             // Define folder path
-            $folder = '/uploads/images/';
+            $folder = '/storage/images/post-images/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
             // Upload image

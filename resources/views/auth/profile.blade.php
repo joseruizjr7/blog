@@ -13,9 +13,16 @@
                             </div>
                         @endif
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-4 text-center">
-                                <img src="{{ Storage::url($user->profile_image) }}" class="rounded-circle img-thumbnail" alt="Profile Image" width="300px" height="300px">
-                            </div>
+                            @if (auth()->user()->image == null)
+                                <div class="col-4 text-center">
+                                    <img src="{{ asset('assets/img/avatar.png') }}" class="rounded-circle img-thumbnail" alt="Profile Image" width="300px" height="300px">
+                                </div>
+                            @else
+                                <div class="col-4 text-center">
+                                    <img src="{{ asset(auth()->user()->image) }}" class="rounded-circle img-thumbnail" alt="Profile Image" width="300px" height="300px">
+                                </div>
+                            @endif
+                            
                             <div class="col-8 align-middle">
                                 @if ($errors->any())
                                     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -77,7 +84,7 @@
                                             <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
                                         </div>
                                         <div class="col-md-5">
-                                            <a href="/home" class="btn btn-secondary btn-block">Cancel</a>
+                                        <a href="{{ url('/home') }}" class="btn btn-secondary btn-block">Cancel</a>
                                         </div>
                                     </div>
 

@@ -8,13 +8,16 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row justify-content-center align-items-center">
-                            @if (Storage::url($user->profile_image))
+                            @if (auth()->user()->image == null)
                                 <div class="col-3 text-center">
                                     <!-- Profile Image -->
-                                    <img src="{{ Storage::url($user->profile_image) }}" class="rounded-circle img-thumbnail" alt="Profile Image" width="300px" height="300px">
+                                    <img src="{{ asset('assets/img/avatar.png') }}" class="rounded-circle img-thumbnail" alt="Profile Image" width="300px" height="300px">
                                 </div>
                             @else
-                                
+                                <div class="col-3 text-center">
+                                    <!-- Profile Image -->
+                                    <img src="{{ asset(auth()->user()->image) }}" class="rounded-circle img-thumbnail" alt="Profile Image" width="300px" height="300px">
+                                </div>
                             @endif
                             
                             <div class="col-9 align-middle">
@@ -43,17 +46,17 @@
                 @foreach ($posts as $post)
                     <div class="card mb-3">
                         @if ($post->post_image)
-                            <img src="{{ Storage::url($post->post_image) }}" class="card-img-top">
+                            <img src="{{ asset($post->post_image) }}" class="card-img-top">
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Author: <a href="/user/{{ $post->user->id }}">{{ $post->user->name }} {{ $post->user->last_name }}</a></h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Author: <a href="{{ url('/user/'.$post->user->id) }}">{{ $post->user->name }} {{ $post->user->last_name }}</a></h6>
                             <hr>
                             <p class="card-text">{{ $post->content }}</p>
                             <a href="#" class="btn btn-primary">View More</a>
                         </div>
                         <div class="card-footer text-muted">
-                            {{ $post->created_at }}
+                            {{ $post->created_at->isoFormat('LLLL') }}
                         </div>
                     </div>
                 @endforeach
